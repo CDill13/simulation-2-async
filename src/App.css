@@ -22,7 +22,21 @@
   font-size: large;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+input {
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+}
+
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  0.007% { transform: rotate(540deg); }
+  .03% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
 }

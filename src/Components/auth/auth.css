@@ -1,0 +1,38 @@
+.background{
+    /* display: flex;
+    justify-content: center; */
+    background-color: #AFD4C0;
+    height: fill;
+    width: fill;
+}
+.authContainer{
+    background-color: white;
+    height: fill;
+    width: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.authLogo{
+    animation: App-logo-spin infinite 3600s linear;
+
+    /* margin-top: auto;  */
+}
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 75%;
+
+}
+.inputContainer h3{
+    margin: 20px 0 5px 10px;
+}
+.authInput{
+    border: #AFD4C0 solid 1px;
+}
+.authButtons{
+    
+
+    /* margin-bottom: auto; */
+}

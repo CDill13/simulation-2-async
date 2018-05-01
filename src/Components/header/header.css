@@ -1,0 +1,45 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    color: white;
+    background-color: #519872;
+}
+.headerMiddle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 66%;
+}
+.left{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* font-size: 25px; */
+    height: 70px;
+    width: 21em;
+    background-color: #519872;
+    margin: auto 0 auto 1em;
+}
+.houserTitle{
+    font-weight: bold;
+}
+.dashboardTitle{
+    font-weight: normal;
+}
+.headerLogo{
+    animation: App-logo-spin infinite 3600s linear;
+    margin: auto 0;
+    height: 35px;
+    width: 42px;
+}
+.right{
+    font-weight: bold;
+    margin: auto 1em auto 0;
+}
