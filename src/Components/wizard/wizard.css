@@ -1,0 +1,67 @@
+.wizardBackground{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #AFD4C0;
+    height: calc(100vh - 70px);
+    width: 100%;
+}
+.wizardContainer{
+    background-color: #E2F3EA; 
+    height: stretch;
+    width: 66%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.wizardUpperContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.wizardLowerContainer{
+    width: 75%;
+}
+.circleContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.infoInputContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.infoInputContainer h3{
+    text-align: left;
+    padding-left: 20px;
+}
+.propDescInput{
+    height: 5em;
+}
+.cityStateContainer{
+    display: flex;
+    flex-direction: row;
+}
+.cityStateContainer div{
+    margin-right: auto;
+}
+.cityStateInput{
+    width: 275px;
+}
+.zipInput{
+    width: 250px;
+    padding-right: auto;
+    padding-left: 0; 
+    margin-right: auto;
+    margin-left: 0; 
+}
+.previewImage{
+    height: 375px;
+    width: 700px;
+    border-radius: 5px;
+    border: #519872 solid 1.5px;
+    margin: 40px auto 0 auto;
+}

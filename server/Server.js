@@ -4,17 +4,30 @@ const chalk = require("chalk");
 const massive = require("massive");
 const bodyParser = require("body-parser");
 const axios = require("axios");
-const ctrlr = require("./Controller")
+const session = require("express-session");
+let sChalk = chalk.blue;
+let seChalk = chalk.magenta;
+const ctrlr = require("./Controller");
+// const keydown = require("react-keydown");
+// const checkForSession = require("./middleware/checkForSession");
 
 const {
     CONNECTION_STRING,
-    SERVER_PORT
+    SERVER_PORT,
+    SESSION_SECRET
 } = process.env
 
 const app = express();
 app.use(bodyParser.json());
-let sChalk = chalk.blue;
-
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {maxAge: 1000}
+}))
+/*
+app.use(checkForSession , console.log(seChalk("session", session)) );
+*/
 massive(process.env.CONNECTION_STRING).then(
     db => {
         app.set("db", db)
@@ -22,7 +35,11 @@ massive(process.env.CONNECTION_STRING).then(
     }
 )
 
-app.post(`/api/create_user`, ctrlr.createUser)
+app.post(`/api/check_username`, ctrlr.checkUsername)
+app.post(`/api/create_user`, ctrlr.createUser);
+app.post(`/api/login`, ctrlr.login);
+app.get(`/api/isUserOnSession`, ctrlr.isUserOnSession);
+app.delete(`/api/logout`, ctrlr.logout);
 
 let port = SERVER_PORT;
 app.listen(port, () => {

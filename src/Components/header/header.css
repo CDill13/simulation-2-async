@@ -34,7 +34,7 @@
     font-weight: normal;
 }
 .headerLogo{
-    animation: App-logo-spin infinite 3600s linear;
+    animation: App-logo-spin infinite 21600s linear;
     margin: auto 0;
     height: 35px;
     width: 42px;
@@ -42,4 +42,8 @@
 .right{
     font-weight: bold;
     margin: auto 1em auto 0;
+}
+.logout{
+    color: white;
+    text-decoration: none;
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import logo from "./header_logo.png";
 import "./header.css";
+import {Link} from "react-router-dom";
+import axios from "axios";
 
 export default function Header(){
     return (
@@ -12,7 +14,11 @@ export default function Header(){
                     <h1 className="dashboardTitle">Dashboard</h1>
                 </div>
                 <div className="right">
-                <a>Logout</a> 
+                <Link className="logout" to={{
+                    pathname: "/"
+                    }} 
+                    onClick={() => axios.delete(`/api/logout`)}>Logout
+                </Link> 
                 </div>
             </div>
         </div>

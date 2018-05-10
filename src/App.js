@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import Header from "./Components/header/Header"
 // import Dashboard from "./Components/dashboard/Dashboard";
-import Auth from "./Components/auth/Auth";
+// import Auth from "./Components/auth/Auth";
+import routes from "./Routes";
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         {/* <Dashboard/> */}
-        <Auth/>
+        {routes}
         {/* <Header/> */}
       </div>
     );

@@ -1,6 +1,6 @@
-.background{
-    /* display: flex;
-    justify-content: center; */
+.authBackground{
+    display: flex;
+    justify-content: center;
     background-color: #AFD4C0;
     height: fill;
     width: fill;
@@ -14,7 +14,7 @@
     justify-content: center;
 }
 .authLogo{
-    animation: App-logo-spin infinite 3600s linear;
+    animation: App-logo-spin infinite 21600s linear;
 
     /* margin-top: auto;  */
 }
@@ -32,7 +32,33 @@
     border: #AFD4C0 solid 1px;
 }
 .authButtons{
-    
-
-    /* margin-bottom: auto; */
+    width: 45%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.authLoginButton{
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8AEA92;
+    height: 35px;
+    width: 100px;
+    color: black;
+    font-weight: bold;
+    font-size: 14px
+}
+.authRegisterButton{
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3B5249;
+    height: 35px;
+    width: 100px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px    
 }
