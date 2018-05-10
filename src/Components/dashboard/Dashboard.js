@@ -27,7 +27,7 @@ export default class Dashboard extends Component {
                         </div>
                         <h3>Home Listings</h3>
                         <div className="listingContainer">
-                            <img className="listingImg"/>
+                            <img alt="listing Img" className="listingImg"/>
                             <div className="descriptionContainer">
                                 <p>Name</p>
                             </div>

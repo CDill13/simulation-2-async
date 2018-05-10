@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import Header from "../header/Header";
 import active from "./step_active.png";
 import completed from "./step_completed.png";
-import inactive from "./step_inactive.png";
+// import inactive from "./step_inactive.png";
 // import previewPlaceholder from "./previewPlaceholder.PNG"
 import "./wizard.css";
 
@@ -28,11 +28,11 @@ export default class Wizard extends Component {
                         <p>Step 5</p>
                         <div className="wizardLowerContainer">
                             <div className="circleContainer">
-                                <img src={completed}/>
-                                <img src={completed}/>
-                                <img src={completed}/>
-                                <img src={completed}/>
-                                <img src={active}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={active}/>
                             </div>
                             <div className="infoInputContainer">
                                 <h3>Recommended Rent $JAVASCRIPT_HERE</h3>

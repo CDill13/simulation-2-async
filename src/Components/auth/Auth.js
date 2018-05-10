@@ -88,7 +88,7 @@ export default class Auth extends Component {
         return(
             <center className="authBackground" >
                 <center className="authContainer">
-                    <img src={authLogo} className="authLogo"/>
+                    <img src={authLogo} alt="logo" className="authLogo"/>
                     <div className="inputContainer">
                         <h3>Username</h3>
                         <input type="text" onChange={e => this.handleUsername(e.target.value)} className="authInput"/>

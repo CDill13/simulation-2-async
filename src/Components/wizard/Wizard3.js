@@ -28,14 +28,14 @@ export default class Wizard extends Component {
                         <p>Step 3</p>
                         <div className="wizardLowerContainer">
                             <div className="circleContainer">
-                                <img src={completed}/>
-                                <img src={completed}/>
-                                <img src={active}/>
-                                <img src={inactive}/>
-                                <img src={inactive}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={active}/>
+                                <img alt="step" src={inactive}/>
+                                <img alt="step" src={inactive}/>
                             </div>
                             <div className="infoInputContainer">
-                                <img className="previewImage" src={(this.state.imgURL ? this.state.imgURL : previewPlaceholder)}/>
+                                <img alt="preview" className="previewImage" src={(this.state.imgURL ? this.state.imgURL : previewPlaceholder)}/>
                                 <h3>Image URL</h3>
                                 <input className="imageUrlInput"/>
                             </div>

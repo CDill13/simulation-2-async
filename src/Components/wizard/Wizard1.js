@@ -2,9 +2,11 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import Header from "../header/Header";
 import active from "./step_active.png";
-import completed from "./step_completed.png";
+// import completed from "./step_completed.png";
 import inactive from "./step_inactive.png";
 import "./wizard.css";
+import {connect} from "react-redux";
+import {updatePropName, updatePropDesc} from "../../ducks/reducer";
 
 export default class Wizard extends Component {
     constructor(){
@@ -16,6 +18,7 @@ export default class Wizard extends Component {
     }
 
     render(){
+        const {updatePropName, updatePropDesc} = this.props;
         return(
             <div>
                 <Header/>
@@ -28,17 +31,17 @@ export default class Wizard extends Component {
                         <p>Step 1</p>
                         <div className="wizardLowerContainer">
                             <div className="circleContainer">
-                                <img src={active}/>
-                                <img src={inactive}/>
-                                <img src={inactive}/>
-                                <img src={inactive}/>
-                                <img src={inactive}/>
+                                <img alt="step" src={active}/>
+                                <img alt="step" src={inactive}/>
+                                <img alt="step" src={inactive}/>
+                                <img alt="step" src={inactive}/>
+                                <img alt="step" src={inactive}/>
                             </div>
                             <div className="infoInputContainer">
                                 <h3>Property Name</h3>
-                                <input className="propNameInput"/>
+                                <input onChange={(e) => updatePropName(e.target.value)} className="propNameInput"/>
                                 <h3>Property Description</h3>
-                                <input className="propDescInput"/>
+                                <input onChange={(e) => updatePropDesc(e.target.value)} className="propDescInput"/>
                             </div>
                             <Link to={{pathname: "/wizard2"}}>
                             <button>Next Step</button>
@@ -50,3 +53,4 @@ export default class Wizard extends Component {
         )
     }
 }
+

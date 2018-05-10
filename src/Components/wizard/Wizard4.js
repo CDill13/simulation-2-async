@@ -28,11 +28,11 @@ export default class Wizard extends Component {
                         <p>Step 4</p>
                         <div className="wizardLowerContainer">
                             <div className="circleContainer">
-                                <img src={completed}/>
-                                <img src={completed}/>
-                                <img src={completed}/>
-                                <img src={active}/>
-                                <img src={inactive}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={completed}/>
+                                <img alt="step" src={active}/>
+                                <img alt="step" src={inactive}/>
                             </div>
                             <div className="infoInputContainer">
                                 <h3>Loan Amount</h3>
