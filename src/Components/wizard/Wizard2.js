@@ -5,8 +5,10 @@ import active from "./step_active.png";
 import completed from "./step_completed.png";
 import inactive from "./step_inactive.png";
 import "./wizard.css";
+import {connect} from "react-redux";
+import {updateAddress, updateCity, updateState, updateZip} from "../../ducks/reducer"
 
-export default class Wizard extends Component {
+class Wizard2 extends Component {
     constructor(){
         super();
         this.state = {
@@ -18,6 +20,12 @@ export default class Wizard extends Component {
     }
 
     render(){
+        const {updateAddress, updateCity, updateState, updateZip} = this.props;
+        // console.log(this.props);
+        console.log(this.props.city);
+        console.log(this.props.state);
+        console.log(this.props.zip);
+        console.log(this.props.address);
         return(
             <div>
                 <Header/>
@@ -25,7 +33,7 @@ export default class Wizard extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <button>cancel</button>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
                         </center>
                         <p>Step 2</p>
                         <div className="wizardLowerContainer">
@@ -38,19 +46,19 @@ export default class Wizard extends Component {
                             </div>
                             <div className="infoInputContainer">
                                 <h3>Address</h3>
-                                <input className="addressInput"/>
+                                <input onChange={(e) => updateAddress(e.target.value)} className="addressInput"/>
                                 <div className="cityStateContainer">
                                     <div>
                                         <h3>City</h3>
-                                        <input className="cityStateInput"/>   
+                                        <input onChange={(e) => updateCity(e.target.value)} className="cityStateInput"/>   
                                     </div> 
                                     <div>
                                         <h3>State</h3>
-                                        <input className="cityStateInput"/>
+                                        <input onChange={(e) => updateState(e.target.value)} className="cityStateInput"/>
                                     </div> 
                                 </div>
                                 <h3>Zip</h3>
-                                <input className="zipInput"/>
+                                <input onChange={(e) => updateZip(e.target.value)} className="zipInput"/>
                             </div>
                             <Link to={{pathname: "/wizard1"}}>
                             <button>Previous Step</button>
@@ -65,3 +73,15 @@ export default class Wizard extends Component {
         )
     }
 }
+
+function mapStateToProps(duckState) {
+    const {address, city, state, zip} = duckState;
+    return {
+        address,
+        city,
+        state,
+        zip
+    }    
+}
+
+export default connect(mapStateToProps, {updateAddress, updateCity, updateState, updateCity, updateZip})(Wizard2);

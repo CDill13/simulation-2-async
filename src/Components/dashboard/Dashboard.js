@@ -2,15 +2,39 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import Header from "../header/Header";
 import axios from "axios";
-
+import {connect} from "react-redux";
+import {putUserOnProps} from "../../ducks/reducer";
 import "./dashboard.css";
-export default class Dashboard extends Component {
+
+class Dashboard extends Component {
+    constructor(){
+        super();
+        this.state = {
+            userProperties: []
+        };
+    }
 
     componentDidMount(){
-        axios.get(`/api/isUserOnSession`).then(res => console.log("user", res.data));
+        axios.get(`/api/isUserOnSession`).then(res =>
+            // console.log(`userNugget: `,res.data.user) &
+            this.props.putUserOnProps(res.data.user) & 
+            axios.post(`/api/getUserProperties`, res.data.user)
+            .then(response => {
+                this.setState({
+                    userProperties: response.data
+                });
+            })
+        )
+    
+        
     }
 
     render(){
+        const {putUserOnProps} = this.props;
+        console.log(`user:`,this.props.user && this.props.user.id);
+        console.log(`userProperties`,this.state.userProperties);
+        // console.log(`session: `, req)
+        // console.log(this.props);
         return(
             <div>
                 <Header/>
@@ -27,6 +51,9 @@ export default class Dashboard extends Component {
                         </div>
                         <h3>Home Listings</h3>
                         <div className="listingContainer">
+                            {this.state.userProperties.map((element) => {
+                                return <div>poop</div>
+                            })}
                             <img alt="listing Img" className="listingImg"/>
                             <div className="descriptionContainer">
                                 <p>Name</p>
@@ -38,3 +65,12 @@ export default class Dashboard extends Component {
         )
     }
 }
+
+function mapStateToProps(duckState) {
+    const {user} = duckState;
+    return{
+        user
+    };
+}
+
+export default connect(mapStateToProps, {putUserOnProps})(Dashboard);

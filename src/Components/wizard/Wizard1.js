@@ -8,7 +8,7 @@ import "./wizard.css";
 import {connect} from "react-redux";
 import {updatePropName, updatePropDesc} from "../../ducks/reducer";
 
-export default class Wizard extends Component {
+class Wizard1 extends Component {
     constructor(){
         super();
         this.state = {
@@ -17,8 +17,17 @@ export default class Wizard extends Component {
         }
     }
 
+    // onKeyPressed(e){
+    //     if(e.key === "Enter"){
+    //         this.props.history.push("/wizard2");
+    //     }
+    //     // console.log(e.key);
+    // }
+    
+
     render(){
         const {updatePropName, updatePropDesc} = this.props;
+        console.log(this.props);
         return(
             <div>
                 <Header/>
@@ -26,7 +35,7 @@ export default class Wizard extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <button>cancel</button>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
                         </center>
                         <p>Step 1</p>
                         <div className="wizardLowerContainer">
@@ -41,7 +50,7 @@ export default class Wizard extends Component {
                                 <h3>Property Name</h3>
                                 <input onChange={(e) => updatePropName(e.target.value)} className="propNameInput"/>
                                 <h3>Property Description</h3>
-                                <input onChange={(e) => updatePropDesc(e.target.value)} className="propDescInput"/>
+                                <textarea onChange={(e) => updatePropDesc(e.target.value)} className="propDescInput"/>
                             </div>
                             <Link to={{pathname: "/wizard2"}}>
                             <button>Next Step</button>
@@ -54,3 +63,13 @@ export default class Wizard extends Component {
     }
 }
 
+function mapStateToProps(duckState) {
+    const {propName, propDesc} = duckState;
+    return {
+        propName,
+        propDesc
+    };
+    // console.log(propName, propDesc)
+}
+
+export default connect(mapStateToProps, {updatePropName, updatePropDesc})(Wizard1)

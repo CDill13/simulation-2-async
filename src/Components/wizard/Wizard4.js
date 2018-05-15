@@ -6,16 +6,22 @@ import completed from "./step_completed.png";
 import inactive from "./step_inactive.png";
 // import previewPlaceholder from "./previewPlaceholder.PNG"
 import "./wizard.css";
+import {connect} from "react-redux";
+import {updateLoanAmount, updateMonthlyMortgage} from "../../ducks/reducer";
 
-export default class Wizard extends Component {
+class Wizard4 extends Component {
     constructor(){
         super();
         this.state = {
-            imgURL: ""
+            loanAmount: "",
+            monthlyMortgage: ""
         }
     }
 
     render(){
+        const {updateLoanAmount, updateMonthlyMortgage} = this.props;
+        console.log(this.props.monthlyMortgage);
+        console.log(this.props.loanAmount);
         return(
             <div>
                 <Header/>
@@ -23,7 +29,7 @@ export default class Wizard extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <button>cancel</button>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
                         </center>
                         <p>Step 4</p>
                         <div className="wizardLowerContainer">
@@ -36,9 +42,9 @@ export default class Wizard extends Component {
                             </div>
                             <div className="infoInputContainer">
                                 <h3>Loan Amount</h3>
-                                <input className="imageUrlInput"/>
+                                <input type="number" min="1" step="any" onChange={(e) => updateLoanAmount(e.target.value)} className="imageUrlInput"/>
                                 <h3>Monthly Mortgage</h3>
-                                <input className="imageUrlInput"/>
+                                <input type="number" min="1" step="any" onChange={(e) => updateMonthlyMortgage(e.target.value)} className="imageUrlInput"/>
                             </div>
                             <Link to={{pathname: "/wizard3"}}>
                             <button>Previous Step</button>
@@ -53,3 +59,12 @@ export default class Wizard extends Component {
         )
     }
 }
+
+function mapStateToProps(duckState) {
+    const {loanAmount, monthlyMortgage} = duckState;
+    return{
+        loanAmount, monthlyMortgage
+    };
+}
+
+export default connect(mapStateToProps, {updateLoanAmount, updateMonthlyMortgage})(Wizard4);

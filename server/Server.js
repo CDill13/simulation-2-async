@@ -23,7 +23,7 @@ app.use(session({
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: {maxAge: 1000}
+    cookie: {maxAge: 3600000}
 }))
 /*
 app.use(checkForSession , console.log(seChalk("session", session)) );
@@ -40,6 +40,8 @@ app.post(`/api/create_user`, ctrlr.createUser);
 app.post(`/api/login`, ctrlr.login);
 app.get(`/api/isUserOnSession`, ctrlr.isUserOnSession);
 app.delete(`/api/logout`, ctrlr.logout);
+app.post(`/api/saveNewProperty`, ctrlr.saveNewProperty);
+app.post(`/api/getUserProperties`, ctrlr.getUserProperties);
 
 let port = SERVER_PORT;
 app.listen(port, () => {

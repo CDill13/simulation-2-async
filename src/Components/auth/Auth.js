@@ -49,16 +49,17 @@ export default class Auth extends Component {
             // console.log(`username and password: ${user.username}, ${user.password}`);
             axios.post(`/api/check_username`, user)
             .then(res => {
-                if(res.data[0]){
-                    if(res.data[0].username === user.username){
-                        axios.post(`/api/login`, {username: user.username, password: user.password}).then(() => {
+                // console.log(`LOGIN`, res.data[0]);
+                if(res.data[0].username === user.username){
+                    axios.post(`/api/login`, {username: user.username, password: user.password}).then(response => {
+                        // console.log(`login: `, response.data);
+                        if(response.data === "LOGIN FAILED"){
+                            alert(`Check your username and password.`);
+                        } else {
                             this.props.history.push("/dashboard");
-                            // console.log(res);
-                            // console.log(this.props);
-                        })
-                    }
-                } else {
-                    console.log("poop");
+                        }
+                        // console.log(this.props);
+                    })
                 }
             })
         }
@@ -72,12 +73,12 @@ export default class Auth extends Component {
             .then(res => {
                 if(res.data[0]){
                     if(res.data[0].username === user.username){
-                        alert(`That username is already in use.`);
+                        alert(`${this.state.username} is not available as a username. Please enter a different username.`);
                     }
                 } else {
                     axios.post(`/api/create_user`, {username: user.username, password: user.password}).then(res => {
                         this.props.history.push("/dashboard");
-                        console.log(res);
+                        // console.log(res);
                     })
                 }
             })

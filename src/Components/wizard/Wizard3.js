@@ -6,8 +6,10 @@ import completed from "./step_completed.png";
 import inactive from "./step_inactive.png";
 import previewPlaceholder from "./previewPlaceholder.PNG"
 import "./wizard.css";
+import {connect} from "react-redux";
+import {updateImgURL} from "../../ducks/reducer";
 
-export default class Wizard extends Component {
+class Wizard3 extends Component {
     constructor(){
         super();
         this.state = {
@@ -16,6 +18,9 @@ export default class Wizard extends Component {
     }
 
     render(){
+        const {updateImgURL} = this.props;
+        // console.log(this.props.address);
+        console.log(this.props.imgURL);
         return(
             <div>
                 <Header/>
@@ -23,7 +28,7 @@ export default class Wizard extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <button>cancel</button>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
                         </center>
                         <p>Step 3</p>
                         <div className="wizardLowerContainer">
@@ -37,7 +42,7 @@ export default class Wizard extends Component {
                             <div className="infoInputContainer">
                                 <img alt="preview" className="previewImage" src={(this.state.imgURL ? this.state.imgURL : previewPlaceholder)}/>
                                 <h3>Image URL</h3>
-                                <input className="imageUrlInput"/>
+                                <input onChange={(e) => updateImgURL(e.target.value)} className="imageUrlInput"/>
                             </div>
                             <Link to={{pathname: "/wizard2"}}>
                             <button>Previous Step</button>
@@ -52,3 +57,12 @@ export default class Wizard extends Component {
         )
     }
 }
+
+function mapStateToProps(duckState) {
+    const {imgURL} = duckState;
+    return {
+        imgURL
+    };
+}
+
+export default connect(mapStateToProps, {updateImgURL})(Wizard3)
