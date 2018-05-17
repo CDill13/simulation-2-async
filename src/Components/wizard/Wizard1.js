@@ -7,6 +7,7 @@ import inactive from "./step_inactive.png";
 import "./wizard.css";
 import {connect} from "react-redux";
 import {updatePropName, updatePropDesc} from "../../ducks/reducer";
+import axios from "axios";
 
 class Wizard1 extends Component {
     constructor(){
@@ -24,6 +25,16 @@ class Wizard1 extends Component {
     //     // console.log(e.key);
     // }
     
+    componentDidMount(){
+        axios.get(`/api/isUserOnSession`).then(res =>
+            // console.log("result",res),
+            // console.log(`userNugget: `,res.data.user) &
+            res.data.user ?
+            console.log(`User is still on session`)
+            :
+            console.log("403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!")
+        )
+    }
 
     render(){
         const {updatePropName, updatePropDesc} = this.props;
@@ -35,7 +46,7 @@ class Wizard1 extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton"><span className="btnText">Cancel</span></Link>
                         </center>
                         <p>Step 1</p>
                         <div className="wizardLowerContainer">
@@ -52,9 +63,14 @@ class Wizard1 extends Component {
                                 <h3>Property Description</h3>
                                 <textarea onChange={(e) => updatePropDesc(e.target.value)} className="propDescInput"/>
                             </div>
-                            <Link to={{pathname: "/wizard2"}}>
-                            <button>Next Step</button>
-                            </Link>
+                            <div className="navButtonContainer">
+                                {/* <Link to={{pathname: "/wizard4"}}>
+                                <button>Previous Step</button>
+                                </Link> */}
+                                <Link to={{pathname: "/wizard2"}}>
+                                <button>Next Step</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </center>

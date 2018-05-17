@@ -77,7 +77,8 @@ export default class Auth extends Component {
                     }
                 } else {
                     axios.post(`/api/create_user`, {username: user.username, password: user.password}).then(res => {
-                        this.props.history.push("/dashboard");
+                        this.login(),
+                        this.props.history.push("/dashboard")
                         // console.log(res);
                     })
                 }

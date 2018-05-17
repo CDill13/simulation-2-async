@@ -18,6 +18,17 @@ class Wizard5 extends Component {
         }
     }
 
+    componentDidMount(){
+        axios.get(`/api/isUserOnSession`).then(res =>
+            // console.log("result",res),
+            // console.log(`userNugget: `,res.data.user) &
+            res.data.user ?
+            console.log(`User is still on session`)
+            :
+            console.log("403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!")
+        )
+    }
+
     saveNewProperty(){
         let newProperty = {
             user: this.props.user.id,
@@ -53,7 +64,7 @@ class Wizard5 extends Component {
             this.props.loanAmount,
             this.props.desiredRent
         )
-        let reccomendedRent = this.props.monthlyMortgage * 1.25;
+        let reccomendedRent = (this.props.monthlyMortgage * 1.25).toFixed(2);
         return(
             <div>
                 <Header/>
@@ -61,7 +72,7 @@ class Wizard5 extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton"><span className="btnText">Cancel</span></Link>
                         </center>
                         <p>Step 5</p>
                         <div className="wizardLowerContainer">
@@ -73,16 +84,18 @@ class Wizard5 extends Component {
                                 <img alt="step" src={active}/>
                             </div>
                             <div className="infoInputContainer">
-                                <h3>Recommended Rent {reccomendedRent}</h3>
+                                <h3>Recommended Rent: ${reccomendedRent}</h3>
                                 <h3>Desired Rent</h3>
                                 <input type="number" min="1" step="any" onChange={(e) => updateDesiredRent(e.target.value)} className="desiredRentInput"/>
                             </div>
-                            <Link to={{pathname: "/wizard4"}}>
-                            <button>Previous Step</button>
-                            </Link>
-                            <Link to={{pathname: "/dashboard"}}>
-                            <button onClick={() => this.saveNewProperty()} >Complete</button>
-                            </Link>
+                            <div className="navButtons">
+                                <Link to={{pathname: "/wizard4"}}>
+                                <button>Previous Step</button>
+                                </Link>
+                                <Link to={{pathname: "/dashboard"}}>
+                                <button onClick={() => this.saveNewProperty()} >Complete</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

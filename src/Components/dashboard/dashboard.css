@@ -1,7 +1,8 @@
 .dashBackground{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    margin: 0 auto;
     background-color: #AFD4C0;
     height: calc(100vh - 70px);
     width: 100%;
@@ -9,7 +10,8 @@
 .dashboardContainer{
     background-color: #E2F3EA; 
     height: stretch;
-    width: 60%;
+    width: 65%;
+    margin: 0 auto;
     /* display: flex; */
     /* flex-direction: column; */
     /* justify-content: center; */
@@ -28,6 +30,10 @@
     width: 95%;
     /* font-size:12px; */
     border-bottom: black solid 2px;
+    margin: 0 auto;
+}
+.filterContainer p {
+    margin: 10px 
 }
 .filterBtn{
     background-color: #8AEA92;
@@ -43,4 +49,81 @@
     border-radius: 3px;
     margin: 0 3px;
     border: none;
+}
+.filterInput{
+    width: 150px;
+}
+/* .dashboardLower{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: left;
+} */
+.dashboardLower h3{
+    align-self: left;
+    margin-left: 5%;
+}
+.listingInformationBox{
+    height: 150px;
+    width: 95%;
+    margin: 5px auto;
+    display: flex; 
+    flex-direction: row; 
+    /* justify-content: space-evenly; */
+    background-color: #F6F0F0;
+}
+.nameAndDescriptionBox{
+    /* margin: auto 0; */
+    height: 150px;
+    width: 20vw;
+    font-size: 14px;
+    padding-right: 10px;
+    padding-top: 10px;
+    /* align-items: flex-start; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+}
+.nameAndDescriptionBox b p{
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: baseline; */
+    /* margin: 5px auto 0 0; */
+    margin-top: 5px;
+}
+.listingDetailBox{
+    margin: auto 0;
+    /* height: 150px; */
+    width: fit-content;
+    display: flex; 
+    flex-direction: column;
+    font-size: 14px;
+    margin: auto 0;
+}
+.listingDetailBox b{
+    margin: 1px 0;
+}
+.listingImg{
+    align-self: flex-start;
+    height: 150px;
+    width: 150px;
+    padding-right: 10px;
+}
+.verticalLine{
+    width: 5px;
+    height: 135px;
+    border-left: 2px solid black;
+    margin: auto 0;
+    padding-right: 10px;    
+}
+
+/* .listingInformationBox > .listingImg,
+.listingInformationBox > .nameAndDescriptionBox
+.listingInformationBox > .verticalLine,
+.listingInformationBox > .listingDetailBox {
+    display: inline;
+*/
+
+.X{
+    margin: 5px 5px auto auto;
 }

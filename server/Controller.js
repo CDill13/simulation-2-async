@@ -5,7 +5,7 @@ module.exports = {
     createUser: (req, res) => {
         const dbInstance = req.app.get("db");
         const {username, password} = req.body;
-        console.log(cChalk(req.session));
+        console.log(cChalk(`creatingSession:`,req.session));
 
         dbInstance.auth.create_user([username, password])
         .then(response => {
@@ -43,7 +43,8 @@ module.exports = {
     },
     isUserOnSession: (req, res) => {
         // console.log(`user:`, req.session);
-        res.status(200).send(req.session)
+        res.status(200).send(req.session);
+        // res.status(403).send();
     },
     logout: (req, res) => {
         console.log(cChalk(`logout ${req.session}`));
@@ -54,7 +55,7 @@ module.exports = {
     saveNewProperty: (req, res) => {
         const dbInstance = req.app.get("db");
         const {user, property_name, property_description, address, city, state, zip, img_url, monthly_mortgage, loan_amount, desired_rent} = req.body;
-        console.log(cChalk(req.body));
+        console.log(cChalk(`savingNewProperty:`,req.body));
 
         dbInstance.properties.saveNewProperty([user, property_name, property_description, address, city, state, zip, img_url, monthly_mortgage, loan_amount, desired_rent])
         .then(response => {
@@ -66,8 +67,17 @@ module.exports = {
     getUserProperties: (req, res) => {
         const dbInstance = req.app.get("db");
         const {username} = req.body;
-        console.log(cChalk(req.body));
+        console.log(cChalk(`gettingUser'sProperties:`,req.body));
         dbInstance.properties.getUserProperties([username])
+        .then(response => {
+            res.status(200).send(response);
+        })
+    },
+    deleteProperty: (req, res) => {
+        const dbInstance = req.app.get("db");
+        const propId = req.params.id;
+        console.log(cChalk(`propId`,propId));
+        dbInstance.properties.deleteProperty([propId])
         .then(response => {
             res.status(200).send(response);
         })

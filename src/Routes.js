@@ -7,6 +7,7 @@ import Wizard2 from "./Components/wizard/Wizard2";
 import Wizard3 from "./Components/wizard/Wizard3";
 import Wizard4 from "./Components/wizard/Wizard4";
 import Wizard5 from "./Components/wizard/Wizard5";
+import UnAuth from "./Components/auth/UnAuth";
 
 export default(
     <HashRouter>
@@ -19,6 +20,7 @@ export default(
                 <Route path="/wizard3" component={Wizard3}/>
                 <Route path="/wizard4" component={Wizard4}/>
                 <Route path="/wizard5" component={Wizard5}/>
+                <Route path="/unauthorized" component={UnAuth}/>
             </Switch>
         </div>
     </HashRouter>

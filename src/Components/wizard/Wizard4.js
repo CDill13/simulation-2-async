@@ -8,6 +8,7 @@ import inactive from "./step_inactive.png";
 import "./wizard.css";
 import {connect} from "react-redux";
 import {updateLoanAmount, updateMonthlyMortgage} from "../../ducks/reducer";
+import axios from "axios";
 
 class Wizard4 extends Component {
     constructor(){
@@ -16,6 +17,17 @@ class Wizard4 extends Component {
             loanAmount: "",
             monthlyMortgage: ""
         }
+    }
+
+    componentDidMount(){
+        axios.get(`/api/isUserOnSession`).then(res =>
+            // console.log("result",res),
+            // console.log(`userNugget: `,res.data.user) &
+            res.data.user ?
+            console.log(`User is still on session`)
+            :
+            console.log("403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!")
+        )
     }
 
     render(){
@@ -29,7 +41,7 @@ class Wizard4 extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton"><span className="btnText">Cancel</span></Link>
                         </center>
                         <p>Step 4</p>
                         <div className="wizardLowerContainer">
@@ -46,12 +58,14 @@ class Wizard4 extends Component {
                                 <h3>Monthly Mortgage</h3>
                                 <input type="number" min="1" step="any" onChange={(e) => updateMonthlyMortgage(e.target.value)} className="imageUrlInput"/>
                             </div>
-                            <Link to={{pathname: "/wizard3"}}>
-                            <button>Previous Step</button>
-                            </Link>
-                            <Link to={{pathname: "/wizard5"}}>
-                            <button>Next Step</button>
-                            </Link>
+                            <div className="navButtons">
+                                <Link to={{pathname: "/wizard3"}}>
+                                <button>Previous Step</button>
+                                </Link>
+                                <Link to={{pathname: "/wizard5"}}>
+                                <button>Next Step</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

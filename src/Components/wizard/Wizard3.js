@@ -8,6 +8,7 @@ import previewPlaceholder from "./previewPlaceholder.PNG"
 import "./wizard.css";
 import {connect} from "react-redux";
 import {updateImgURL} from "../../ducks/reducer";
+import axios from "axios";
 
 class Wizard3 extends Component {
     constructor(){
@@ -15,6 +16,23 @@ class Wizard3 extends Component {
         this.state = {
             imgURL: ""
         }
+    }
+
+    componentDidMount(){
+        axios.get(`/api/isUserOnSession`).then(res =>
+            // console.log("result",res),
+            // console.log(`userNugget: `,res.data.user) &
+            res.data.user ?
+            console.log(`User is still on session`)
+            :
+            console.log("403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!")
+        )
+    }
+
+    handleImgURL(value){
+        this.setState({
+            imgURL: value
+        })
     }
 
     render(){
@@ -28,7 +46,7 @@ class Wizard3 extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton"><span className="btnText">Cancel</span></Link>
                         </center>
                         <p>Step 3</p>
                         <div className="wizardLowerContainer">
@@ -42,14 +60,16 @@ class Wizard3 extends Component {
                             <div className="infoInputContainer">
                                 <img alt="preview" className="previewImage" src={(this.state.imgURL ? this.state.imgURL : previewPlaceholder)}/>
                                 <h3>Image URL</h3>
-                                <input onChange={(e) => updateImgURL(e.target.value)} className="imageUrlInput"/>
+                                <input onChange={(e) => {updateImgURL(e.target.value), this.handleImgURL(e.target.value)}} className="imageUrlInput"/>
                             </div>
-                            <Link to={{pathname: "/wizard2"}}>
-                            <button>Previous Step</button>
-                            </Link>
-                            <Link to={{pathname: "/wizard4"}}>
-                            <button>Next Step</button>
-                            </Link>
+                            <div className="navButtons">
+                                <Link to={{pathname: "/wizard2"}}>
+                                <button>Previous Step</button>
+                                </Link>
+                                <Link to={{pathname: "/wizard4"}}>
+                                <button >Next Step</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import inactive from "./step_inactive.png";
 import "./wizard.css";
 import {connect} from "react-redux";
 import {updateAddress, updateCity, updateState, updateZip} from "../../ducks/reducer"
+import axios from "axios";
 
 class Wizard2 extends Component {
     constructor(){
@@ -17,6 +18,17 @@ class Wizard2 extends Component {
             state: "",
             zip: ""
         }
+    }
+
+    componentDidMount(){
+        axios.get(`/api/isUserOnSession`).then(res =>
+            // console.log("result",res),
+            // console.log(`userNugget: `,res.data.user) &
+            res.data.user ?
+            console.log(`User is still on session`)
+            :
+            console.log("403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!403 UNAUTHORIZED!!!")
+        )
     }
 
     render(){
@@ -33,7 +45,7 @@ class Wizard2 extends Component {
                     <div className="wizardContainer">
                         <center className="wizardUpperContainer">
                             <h3>Add a new listing</h3>
-                            <Link to={{pathname: "/dashboard"}} className="cancelButton">cancel</Link>
+                            <Link to={{pathname: "/dashboard"}} className="cancelButton"><span className="btnText">Cancel</span></Link>
                         </center>
                         <p>Step 2</p>
                         <div className="wizardLowerContainer">
@@ -60,12 +72,14 @@ class Wizard2 extends Component {
                                 <h3>Zip</h3>
                                 <input onChange={(e) => updateZip(e.target.value)} className="zipInput"/>
                             </div>
-                            <Link to={{pathname: "/wizard1"}}>
-                            <button>Previous Step</button>
-                            </Link>
-                            <Link to={{pathname: "/wizard3"}}>
-                            <button>Next Step</button>
-                            </Link>
+                            <div className="navButtons">
+                                <Link to={{pathname: "/wizard1"}}>
+                                    <button>Previous Step</button>
+                                </Link>
+                                <Link to={{pathname: "/wizard3"}}>
+                                    <button>Next Step</button>  
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,4 +98,4 @@ function mapStateToProps(duckState) {
     }    
 }
 
-export default connect(mapStateToProps, {updateAddress, updateCity, updateState, updateCity, updateZip})(Wizard2);
+export default connect(mapStateToProps, {updateAddress, updateState, updateCity, updateZip})(Wizard2);

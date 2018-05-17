@@ -23,7 +23,7 @@ app.use(session({
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: {maxAge: 3600000}
+    cookie: {maxAge: 36000000}
 }))
 /*
 app.use(checkForSession , console.log(seChalk("session", session)) );
@@ -42,6 +42,7 @@ app.get(`/api/isUserOnSession`, ctrlr.isUserOnSession);
 app.delete(`/api/logout`, ctrlr.logout);
 app.post(`/api/saveNewProperty`, ctrlr.saveNewProperty);
 app.post(`/api/getUserProperties`, ctrlr.getUserProperties);
+app.delete(`/api/deleteProperty/:id`, ctrlr.deleteProperty)
 
 let port = SERVER_PORT;
 app.listen(port, () => {

@@ -9,14 +9,14 @@
 .wizardContainer{
     background-color: #E2F3EA; 
     height: stretch;
-    width: 60%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
 }
 .wizardUpperContainer{
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -66,7 +66,49 @@
     margin: 40px auto 0 auto;
 }
 .cancelButton{
+    margin-top: 15px;
     background-color: #FEC2C2;
-    height: 15px;
-    width: 40px;
+    height: 35px;
+    width: 68px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* .cancelButton {
+    position: relative;
+} */
+
+.btnText {
+    top: 8px;
+    position: relative;
+}
+
+.navButtons{
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.navButtons button,
+.navButtons input{
+    background-color: #3B5249;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+.navButtonContainer{
+    margin: 20px auto;
+}
+.navButtonContainer button{
+    background-color: #3B5249;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
 }
