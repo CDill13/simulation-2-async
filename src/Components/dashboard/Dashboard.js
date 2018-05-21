@@ -11,7 +11,8 @@ class Dashboard extends Component {
         super();
         this.state = {
             userProperties: null,
-            filter: -9001
+            filter: -9001,
+            sift: -9001
         };
     }
 
@@ -36,6 +37,18 @@ class Dashboard extends Component {
     handleFilter(value){
         this.setState({
             filter: value
+        });
+    }
+
+    handleSift(value){
+        this.setState({
+            sift: value
+        });
+    }
+
+    resetSift(reset){
+        this.setState({
+            sift: reset
         });
     }
 
@@ -78,8 +91,8 @@ class Dashboard extends Component {
                             <center>
                                 <p>List properties with a "desired rent" greater than: $
                                     <input onChange={(e) => this.handleFilter(e.target.value)} className="filterInput"/>
-                                    <button className="filterBtn">Filter</button>
-                                    <button className="resetFilterBtn">Reset</button>
+                                    <button onClick={() => this.handleSift(this.state.filter)} className="filterBtn">Filter</button>
+                                    <button onClick={() => this.resetSift(-9001)} className="resetFilterBtn">Reset</button>
                                 </p>                        
                             </center>
                         </div>
@@ -92,7 +105,7 @@ class Dashboard extends Component {
                                     // * 1.25).toFixed(2)
                                     console.log("Reccomended:",reccomendedRent2);
                                     console.log("property: ", element);
-                                    return parseFloat(element.desired_rent.slice(1)) > this.state.filter ?
+                                    return Number(reccomendedRent2) > this.state.sift ?
                                         <div className="listingInformationBox">
                                             <img className="listingImg" alt="listing" src={element.img_url}/>
                                             <div className="nameAndDescriptionBox">

@@ -9,7 +9,7 @@ export default function Header(){
         <div className="header">
             <div className="headerMiddle">
                 <div className="left">
-                    <img className="turd" alt="house" src={logo}/>
+                    <img className="headerLogo" alt="house" src={logo}/>
                     <h1 className="houserTitle">Houser</h1>
                     <h1 className="dashboardTitle">Dashboard</h1>
                 </div>
